@@ -6,24 +6,7 @@
 
 @foreach (Book b in Model.Books)
 {
-    <div class="col-10">
-        <h3>@b.Title</h3>
-    </div>
-    <div class="col-6 card card-outline-primary m-1 p-1">
-        <div class="bg-faded p-1">
-            <ul>
-
-                <li><b>Author:</b> @b.Author</li>
-                <li><b>Publisher:</b> @b.Publisher</li>
-                <li><b>Isbn:</b> @b.Isbn</li>
-                <li><b>Classification:</b> @b.Classification</li>
-                <li><b>Category</b> @b.Category</li>
-                <li><b>Page Count:</b> @b.PageCount</li>
-                <li><b>Price:</b> $@b.Price</li>
-            </ul>
-            </div>
-        </div>
-        <br />
+    <partial name="BookSummary" model="b"/>
         }
 
 

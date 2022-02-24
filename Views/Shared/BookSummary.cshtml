@@ -1,0 +1,37 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Book
+
+
+<div class="col-6 card card-outline-primary m-1 p-1">
+    <div class="col-10 bg-light p-1">
+        <h3>@Model.Title</h3>
+
+        <span class="badge bg-info" style="float:right">
+            <b>Price:</b> $@Model.Price
+        </span>
+    </div>
+    <ul>
+        @*View all of the books*@
+
+        <li><b>Author:</b> @Model.Author</li>
+        <li><b>Publisher:</b> @Model.Publisher</li>
+        <li><b>Isbn:</b> @Model.Isbn</li>
+        <li><b>Classification:</b> @Model.Classification</li>
+        <li><b>Category</b> @Model.Category</li>
+        <li><b>Page Count:</b> @Model.PageCount</li>
+
+    </ul>
+
+
+
+    <form method="POST" asp-page="/Cart">
+        <input type="hidden" asp-for="@Model.BookId" />
+        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+
+        <span class="card-text">
+            <button type="submit" class="btn btn-success btn-sm float-end">Add Book</button>
+        </span>
+    </form>
+</div>
