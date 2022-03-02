@@ -6,10 +6,20 @@
     <title>@ViewData["Title"] - Amazon</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link href="/lib/font-awesome/easy/css/all.min.css" rel="stylesheet" />
 </head>
 <body>
+
+
     <div class="bg-dark text-white p-2">
-        <span class="navbar-brand ml-2">Book List</span>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col navbar-brand">Book List</div>
+                <div class="col-6 text-right">
+                    <vc:cart-summary />
+                </div>
+            </div>
+        </div>
     </div>
     <div class="row m-1 p-1">
         <div class="col-3"><vc:category></vc:category></div>
@@ -20,15 +30,15 @@
                 </main>
             </div>
         </div>
-            <footer class="border-top footer text-muted">
-                <div class="container">
-                    &copy; 2022 - IS 413
-                </div>
-            </footer>
-            <script src="~/lib/jquery/dist/jquery.min.js"></script>
-            <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-            <script src="~/js/site.js" asp-append-version="true"></script>
-            @RenderSection("Scripts", required: false)
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2022 - IS 413
+            </div>
+        </footer>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @RenderSection("Scripts", required: false)
 
     </div>
 </body>
