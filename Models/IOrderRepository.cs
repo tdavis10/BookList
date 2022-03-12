@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace Amazon.Models
 {
-    public interface ICustomerRepository
+    public interface IOrderRepository
     {
-        IQueryable<Customer> Customers { get; }
+        IQueryable<Order> Orders { get; }
 
-        void SaveCustomer(Customer customer);
+        void SaveCustomer(Order order);
     }
 }

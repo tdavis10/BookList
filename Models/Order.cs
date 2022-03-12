@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Amazon.Models
 {
-    public class Customer
+    public class Order
     {
         [Key]
         [BindNever]
@@ -35,6 +35,7 @@ namespace Amazon.Models
         [Required(ErrorMessage = "Please Enter Phone Number:")]
         public string Phone { get; set; }
 
-
+        [BindNever]
+        public bool OrderReceived { get; set; }
     }
 }

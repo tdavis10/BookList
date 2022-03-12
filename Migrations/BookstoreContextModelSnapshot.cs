@@ -25,7 +25,7 @@ namespace Amazon.Migrations
                     b.Property<int?>("BookId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("CustomerUserId")
+                    b.Property<int?>("OrderUserId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Quantity")
@@ -35,7 +35,7 @@ namespace Amazon.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.HasIndex("CustomerUserId");
+                    b.HasIndex("OrderUserId");
 
                     b.ToTable("BasketLineItem");
                 });
@@ -81,7 +81,7 @@ namespace Amazon.Migrations
                     b.ToTable("Books");
                 });
 
-            modelBuilder.Entity("Amazon.Models.Customer", b =>
+            modelBuilder.Entity("Amazon.Models.Order", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
@@ -110,6 +110,9 @@ namespace Amazon.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("OrderReceived")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -123,7 +126,7 @@ namespace Amazon.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("Donations");
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Amazon.Models.BasketLineItem", b =>
@@ -132,9 +135,9 @@ namespace Amazon.Migrations
                         .WithMany()
                         .HasForeignKey("BookId");
 
-                    b.HasOne("Amazon.Models.Customer", null)
+                    b.HasOne("Amazon.Models.Order", null)
                         .WithMany("Lines")
-                        .HasForeignKey("CustomerUserId");
+                        .HasForeignKey("OrderUserId");
                 });
 #pragma warning restore 612, 618
         }

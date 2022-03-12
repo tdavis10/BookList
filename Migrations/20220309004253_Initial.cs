@@ -8,7 +8,7 @@ namespace Amazon.Migrations
         {
 
             migrationBuilder.CreateTable(
-                name: "Donations",
+                name: "Orders",
                 columns: table => new
                 {
                     UserId = table.Column<int>(nullable: false)
@@ -21,11 +21,12 @@ namespace Amazon.Migrations
                     State = table.Column<string>(nullable: false),
                     Country = table.Column<string>(nullable: false),
                     Zip = table.Column<int>(nullable: false),
-                    Phone = table.Column<string>(nullable: false)
+                    Phone = table.Column<string>(nullable: false),
+                    OrderReceived = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Donations", x => x.UserId);
+                    table.PrimaryKey("PK_Orders", x => x.UserId);
                 });
 
             migrationBuilder.CreateTable(
@@ -36,7 +37,7 @@ namespace Amazon.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     BookId = table.Column<int>(nullable: true),
                     Quantity = table.Column<int>(nullable: false),
-                    CustomerUserId = table.Column<int>(nullable: true)
+                    OrderUserId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -48,9 +49,9 @@ namespace Amazon.Migrations
                         principalColumn: "BookId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_BasketLineItem_Donations_CustomerUserId",
-                        column: x => x.CustomerUserId,
-                        principalTable: "Donations",
+                        name: "FK_BasketLineItem_Orders_OrderUserId",
+                        column: x => x.OrderUserId,
+                        principalTable: "Orders",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -61,9 +62,9 @@ namespace Amazon.Migrations
                 column: "BookId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BasketLineItem_CustomerUserId",
+                name: "IX_BasketLineItem_OrderUserId",
                 table: "BasketLineItem",
-                column: "CustomerUserId");
+                column: "OrderUserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -75,7 +76,7 @@ namespace Amazon.Migrations
                 name: "Books");
 
             migrationBuilder.DropTable(
-                name: "Donations");
+                name: "Orders");
         }
     }
 }

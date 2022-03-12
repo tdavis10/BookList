@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Amazon.Controllers
 {
-    public class CustomerController : Controller
+    public class OrderController : Controller
     {
-        private ICustomerRepository repo { get; set; }
+        private IOrderRepository repo { get; set; }
         private Basket basket { get; set; }
-        public CustomerController(ICustomerRepository temp, Basket b)
+        public OrderController(IOrderRepository temp, Basket b)
         {
             repo = temp;
             basket = b;
@@ -21,11 +21,11 @@ namespace Amazon.Controllers
         [HttpGet]
         public IActionResult Checkout()
         {
-            return View(new Customer());
+            return View(new Order());
         }
 
         [HttpPost]
-        public IActionResult Checkout(Customer customer)
+        public IActionResult Checkout(Order order)
         {
             if (basket.Items.Count() == 0)
             {
@@ -34,8 +34,8 @@ namespace Amazon.Controllers
 
             if (ModelState.IsValid)
             {
-                customer.Lines = basket.Items.ToArray();
-                repo.SaveCustomer(customer);
+                order.Lines = basket.Items.ToArray();
+                repo.SaveCustomer(order);
                 basket.ClearBasket();
 
                 return RedirectToPage("/Confirmation");

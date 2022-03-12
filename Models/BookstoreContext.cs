@@ -20,7 +20,7 @@ namespace Amazon.Models
         }
 
         public virtual DbSet<Book> Books { get; set; }
-        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
 
     }
 }
