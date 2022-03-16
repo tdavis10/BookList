@@ -11,7 +11,7 @@
 <body>
 
 
-    <div class="bg-dark text-white p-2 shadow">
+    <div class="bg-dark text-white p-2 shadow fixed-top">
         <div class="container-fluid">
             <div class="row">
                 <div class="col navbar-brand">Book List</div>
@@ -22,10 +22,12 @@
         </div>
     </div>
     <div class="row m-1 p-1">
-        <div class="col-3"><vc:category></vc:category></div>
-        <div class="col-9">
+        <div class="col-4"><br /><br /><br /><vc:category></vc:category></div>
+        <div class="col-8">
             <div class="container">
                 <main role="main" class="pb-3">
+                    <br />
+                    <br />
                     @RenderBody()
                 </main>
             </div>
